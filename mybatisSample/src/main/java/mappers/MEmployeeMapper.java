@@ -30,6 +30,8 @@ public interface MEmployeeMapper {
 	
 	public static final String SQL_SELECT_ALL_ACTIVE_EMPLOYEE = "SELECT * FROM Employee WHERE IsActive = 'Y'";
 	
+	public static final String SQL_SELECT_ALL_EMPLOYEE = "SELECT * FROM Employee";
+	
 	public static final String SQL_DEACTIVATE_EMPLOYEE = "UPDATE Employee SET "
 			+ " IsActive='N' WHERE Employee_ID = #{Employee_ID}";
 	
@@ -42,6 +44,9 @@ public interface MEmployeeMapper {
 	public MEmployee getUserById(Integer Employee_ID);
 	
 	@Select(SQL_SELECT_ALL_ACTIVE_EMPLOYEE)
+	public List<MEmployee> getAllActiveEmployees();
+	
+	@Select(SQL_SELECT_ALL_EMPLOYEE)
 	public List<MEmployee> getAllEmployees();
 	
 	@Update(SQL_DEACTIVATE_EMPLOYEE)

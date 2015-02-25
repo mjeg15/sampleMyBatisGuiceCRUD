@@ -19,4 +19,7 @@ public interface MUserMapper {
 	@Select("SELECT Password FROM S_USER ORDER BY S_User_ID")
 	List<String> selectAllPasswords();
 	
+	@Select("SELECT Role FROM S_USER ORDER BY S_User_ID")
+	List<String> selectAllRoles();
+	
 }

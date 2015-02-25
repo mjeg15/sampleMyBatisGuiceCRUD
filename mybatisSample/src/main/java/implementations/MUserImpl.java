@@ -32,5 +32,10 @@ public class MUserImpl implements MUserService{
 	public List<String> getAllPasswords() {
 		return userMapper.selectAllPasswords();
 	}
+	
+	@Override
+	public List<String> getAllRoles(){
+		return userMapper.selectAllRoles();
+	}
 
 }

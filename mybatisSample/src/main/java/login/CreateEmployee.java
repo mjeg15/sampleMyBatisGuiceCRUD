@@ -15,7 +15,6 @@ public class CreateEmployee extends ActionSupport{
 	//Injector injector = Guice.createInjector(new MyBatisSampleModule());
 	
 	Injector injector = AppInjector.getInjector();
-
 	
 	MEmployee employee;
 	

@@ -12,4 +12,5 @@ public interface MUserService {
 	
 	public List<String> getAllPasswords();
 	
+	public List<String> getAllRoles();
 }

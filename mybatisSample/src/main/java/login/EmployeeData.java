@@ -3,6 +3,7 @@ package login;
 import guice.AppInjector;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.inject.Injector;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,11 +17,16 @@ public class EmployeeData extends ActionSupport{
 
 	private Injector injector = AppInjector.getInjector();
 	
+	private Map<String, Object> sessionMap = LoginAuthAction.getSession();
+	
 	public String testing(){
 		
 		MEmployeeService employeeService = injector.getInstance(MEmployeeService.class);
-		
-		employees = employeeService.getAllEmployee();
+				
+		if(!sessionMap.get("role").equals("ADMIN"))
+			employees = employeeService.getAllActiveEmployee();
+		else
+			employees = employeeService.getAllEmployee();
 		
 		return ActionSupport.SUCCESS;
 	}

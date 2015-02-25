@@ -24,8 +24,8 @@ public class MEmployeeImpl implements MEmployeeService{
 	}
 
 	@Override
-	public List<MEmployee> getAllEmployee() {
-		return employeeMapper.getAllEmployees();
+	public List<MEmployee> getAllActiveEmployee() {
+		return employeeMapper.getAllActiveEmployees();
 	}
 
 	@Override
@@ -46,6 +46,11 @@ public class MEmployeeImpl implements MEmployeeService{
 	@Override
 	public void disableEmployee(Integer Employee_ID) {
 		employeeMapper.DisableEmployee(Employee_ID);
+	}
+
+	@Override
+	public List<MEmployee> getAllEmployee() {
+		return employeeMapper.getAllEmployees();
 	}
 
 	

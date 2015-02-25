@@ -43,6 +43,10 @@
 <s:form action="goToNewEmployee" method="post">
 	<s:submit method="execute" key="label.goToNewEmployee" align="center" />
 </s:form>
+
+<s:form action="logout" method="post">
+	<s:submit method="execute" value="Logout" align="center" />
+</s:form>
 </table>
 
 </body>

@@ -8,6 +8,8 @@ public interface MEmployeeService {
 
 	public MEmployee getUserByID(Integer Employee_ID);
 	
+	public List<MEmployee> getAllActiveEmployee();
+	
 	public List<MEmployee> getAllEmployee();
 	
 	public void updateEmployee(MEmployee employee);

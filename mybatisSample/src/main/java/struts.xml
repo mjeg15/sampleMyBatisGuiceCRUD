@@ -21,7 +21,12 @@
 		<action name="login" method="authenticate"
 			class="login.LoginAuthAction">
 			<result name="success" type="redirect">/pages/employeeList.action</result>
-			<result name="error">login.jsp</result>
+			<result name="error">/pages/login.jsp</result>
+		</action>
+		
+		<action name="logout" method="logout"
+			class="login.LoginAuthAction">
+			<result name="success">/pages/login.jsp</result>
 		</action>
 		
 		<action name="goToNewEmployee" method="goToNewEmployee"
