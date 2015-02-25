@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='tests.MEmployeeMapper'>
+
+  <select id='getUserById' parameterType='int' resultType='tests.MEmployee'>
+     SELECT 
+      Employee_ID as Employee_ID, 
+      Name as Name,
+      Email as Email,
+      Phone as Phone,
+      Job_Title as Job_Title,
+      IsActive as IsActive
+     FROM Employee 
+     WHERE Employee_ID = #{Employee_ID}
+  </select>
+  <!-- Instead of referencing Fully Qualified Class Names we can register Aliases in mybatis-config.xml and use Alias names. -->
+   <resultMap type='MEmployee' id='Employee'>
+    <id property='Employee_ID' column='Employee_ID'/>
+    <result property='Name' column='Name'/>
+    <result property='Email' column='Email'/>
+    <result property='Phone' column='Phone'/>
+    <result property='Job_Title' column='Job_Title'/>
+    <result property='IsActive' column='IsActive'/>
+   </resultMap>
+
+  <select id='getAllEmployees' resultMap='Employee'>
+   SELECT * FROM Employee WHERE IsActive='Y'
+  </select>
+
+  <insert id='InsertEmployee' parameterType='MEmployee'>
+  INSERT INTO Employee(Employee_ID, Name, Email, Phone, Job_Title, IsActive)
+  VALUES (#{Employee_ID}, #{Name}, #{Email}, #{Phone}, #{Job_Title}, #{IsActive})
+  </insert>
+  
+  <update id='UpdateEmployee' parameterType='MEmployee'>
+  UPDATE Employee
+  SET
+  	Name = #{Name},
+  	Email = #{Email},
+  	Phone = #{Phone},
+  	Job_Title = #{Job_Title}
+  WHERE
+  	Employee_ID = #{Employee_ID}
+  </update>
+  
+  <update id='DisableEmployee' parameterType='MEmployee'>
+  UPDATE Employee
+  SET
+  	IsActive='N'
+  WHERE
+  	Employee_ID = #{Employee_ID}
+  </update>
+  
+  <select id='getLatestID' resultType='java.lang.Integer'>
+  SELECT MAX(Employee_ID) FROM Employee
+  </select>
+
+</mapper>

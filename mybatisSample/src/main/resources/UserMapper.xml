@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='tests.MUserMapper'>
+
+  <select id='getUserById' parameterType='int' resultType='tests.MUser'>
+     SELECT 
+      S_User_ID as S_User_ID, 
+      Username as Username,
+      Password as Password,
+      Role as Role
+     FROM S_USER 
+     WHERE S_User_ID = #{User_ID}
+  </select>
+  <!-- Instead of referencing Fully Qualified Class Names we can register Aliases in mybatis-config.xml and use Alias names. -->
+   <resultMap type='MUser' id='User'>
+    <id property='S_User_ID' column='S_User_ID'/>
+    <result property='Username' column='Username'/>
+    <result property='Password' column='Password'/>
+    <result property='Role' column='Role'/>
+   </resultMap>
+
+  <select id='getAllUsers' resultMap='User'>
+   SELECT * FROM S_USER
+  </select>
+
+  <select id='getAllUsernames' resultType='String'>SELECT Username FROM S_USER ORDER BY S_User_ID</select>	
+  
+  <select id='getAllPasswords' resultType='String'>SELECT Password FROM S_USER ORDER BY S_User_ID</select>	
+
+  <insert id='insertUser' parameterType='MUser' useGeneratedKeys='true' keyProperty='userId'>
+   INSERT INTO USER(S_User_ID, Username, Password, Role)
+    VALUES(#{S_User_ID}, #{Username}, #{Password}, #{Role})
+  </insert>
+
+</mapper>
