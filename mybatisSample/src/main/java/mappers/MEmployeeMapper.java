@@ -2,6 +2,8 @@ package mappers;
 
 import java.util.List;
 
+import models.MEmployee;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -10,8 +12,6 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
-
-import tests.MEmployee;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

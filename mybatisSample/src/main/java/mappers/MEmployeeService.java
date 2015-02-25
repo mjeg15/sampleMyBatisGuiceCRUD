@@ -2,7 +2,7 @@ package mappers;
 
 import java.util.List;
 
-import tests.MEmployee;
+import models.MEmployee;
 
 public interface MEmployeeService {
 

@@ -8,8 +8,8 @@ import java.util.Map;
 import com.google.inject.Injector;
 import com.opensymphony.xwork2.ActionSupport;
 
-import tests.MEmployee;
 import mappers.MEmployeeService;
+import models.MEmployee;
 
 public class EmployeeData extends ActionSupport{
 	

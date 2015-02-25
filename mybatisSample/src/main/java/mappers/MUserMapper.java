@@ -2,9 +2,9 @@ package mappers;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
+import models.MUser;
 
-import tests.MUser;
+import org.apache.ibatis.annotations.Select;
 
 public interface MUserMapper {
 

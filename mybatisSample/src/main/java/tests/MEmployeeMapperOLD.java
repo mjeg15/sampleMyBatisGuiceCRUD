@@ -2,6 +2,8 @@ package tests;
 
 import java.util.List;
 
+import models.MEmployee;
+
 import org.apache.ibatis.annotations.Select;
 
 public interface MEmployeeMapperOLD {

@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.google.inject.Inject;
 
-import tests.MUser;
 import mappers.MUserMapper;
 import mappers.MUserService;
+import models.MUser;
 
 public class MUserImpl implements MUserService{
 

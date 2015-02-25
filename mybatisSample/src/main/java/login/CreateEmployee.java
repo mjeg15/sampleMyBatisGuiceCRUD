@@ -1,9 +1,9 @@
 package login;
 
 import guice.AppInjector;
-import tests.MEmployee;
 import mappers.MEmployeeMapper;
 import mappers.MEmployeeService;
+import models.MEmployee;
 import tests.MyBatisSqlSessionFactory;
 
 import com.google.inject.Guice;

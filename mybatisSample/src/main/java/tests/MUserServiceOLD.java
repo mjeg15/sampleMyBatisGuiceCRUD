@@ -2,6 +2,8 @@ package tests;
 
 import java.util.List;
 
+import models.MUser;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.opensymphony.xwork2.util.logging.Logger;

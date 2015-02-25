@@ -9,8 +9,8 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import mappers.MUserService;
-import tests.MEmployee;
-import tests.MUser;
+import models.MEmployee;
+import models.MUser;
 
 import com.google.inject.Injector;
 import com.opensymphony.xwork2.ActionSupport;

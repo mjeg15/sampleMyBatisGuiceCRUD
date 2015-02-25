@@ -2,6 +2,9 @@ package tests;
 
 import java.util.List;
 
+import models.MEmployee;
+import models.MUser;
+
 public class MainApp {
 
 	public static void main(String args[]){

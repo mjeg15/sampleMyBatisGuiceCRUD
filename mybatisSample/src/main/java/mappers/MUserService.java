@@ -2,7 +2,7 @@ package mappers;
 
 import java.util.List;
 
-import tests.MUser;
+import models.MUser;
 
 public interface MUserService {
 

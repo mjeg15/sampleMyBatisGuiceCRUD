@@ -2,12 +2,11 @@ package implementations;
 
 import java.util.List;
 
-import tests.MEmployee;
-
 import com.google.inject.Inject;
 
 import mappers.MEmployeeMapper;
 import mappers.MEmployeeService;
+import models.MEmployee;
 
 public class MEmployeeImpl implements MEmployeeService{
 

@@ -1,6 +1,6 @@
 package login;
 
-import tests.MEmployee;
+import models.MEmployee;
 import tests.MEmployeeServiceOLD;
 
 import com.opensymphony.xwork2.ActionSupport;
