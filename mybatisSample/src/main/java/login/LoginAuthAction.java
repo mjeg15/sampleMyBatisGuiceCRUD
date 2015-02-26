@@ -12,6 +12,7 @@ import mappers.MUserService;
 import models.MEmployee;
 import models.MUser;
 
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,6 +26,9 @@ public class LoginAuthAction extends ActionSupport implements SessionAware{
 	
 	private Injector injector = AppInjector.getInjector();
 
+	@Inject
+	MUserService usermap;
+		
 	public String authenticate() {
 		
 		if (/*this.username.equals("admin")
@@ -58,8 +62,6 @@ public class LoginAuthAction extends ActionSupport implements SessionAware{
 	 */
 	private boolean userAccountCheck(){
 
-		MUserService usermap = injector.getInstance(MUserService.class);
-		
 		List<String> userNames = usermap.getAllUserNames();
 		List<String> passwords = usermap.getAllPasswords();
 		List<String> roles = usermap.getAllRoles();
@@ -80,6 +82,11 @@ public class LoginAuthAction extends ActionSupport implements SessionAware{
 			return false;
 		
 	}
+	
+	
+	/*
+	 * Getters and Setters
+	 */
 	
 	public String getUsername() {
 		return username;

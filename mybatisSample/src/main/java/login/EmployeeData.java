@@ -15,7 +15,7 @@ public class EmployeeData extends ActionSupport{
 	
 	public List<MEmployee> employees;
 
-	private Injector injector = AppInjector.getInjector();
+	private Injector injector = AppInjector.inj/*AppInjector.getInjector()*/;
 	
 	private Map<String, Object> sessionMap = LoginAuthAction.getSession();
 	
@@ -29,6 +29,7 @@ public class EmployeeData extends ActionSupport{
 			employees = employeeService.getAllEmployee();
 		
 		return ActionSupport.SUCCESS;
+		
 	}
 	
 

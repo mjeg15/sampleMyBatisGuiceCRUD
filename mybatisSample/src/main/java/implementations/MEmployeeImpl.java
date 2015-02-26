@@ -10,12 +10,13 @@ import models.MEmployee;
 
 public class MEmployeeImpl implements MEmployeeService{
 
+	@Inject
 	MEmployeeMapper employeeMapper;
 	
-	@Inject
+	/*@Inject
 	MEmployeeImpl (MEmployeeMapper employeeMapper){
 		this.employeeMapper = employeeMapper;
-	}
+	}*/
 	
 	@Override
 	public MEmployee getUserByID(Integer Employee_ID) {

@@ -1,34 +1,40 @@
 package guice;
 
-import implementations.MEmployeeImpl;
-import implementations.MUserImpl;
-
 import java.util.Properties;
 
+import implementations.MEmployeeImpl;
+import implementations.MUserImpl;
 import mappers.MEmployeeMapper;
 import mappers.MEmployeeService;
 import mappers.MUserMapper;
 import mappers.MUserService;
 
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
 import org.mybatis.guice.MyBatisModule;
 import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import com.google.inject.servlet.GuiceServletContextListener;
+import com.google.inject.servlet.ServletModule;
+import com.google.inject.struts2.Struts2GuicePluginModule;
 
-public class AppInjector {
-
+public class AppListener extends GuiceServletContextListener{
 	
-	public static Injector inj;
-	
-	public static Injector getInjector(){
-		Injector injector = Guice.createInjector(new MyBatisModule() {
+	@Override
+	public Injector getInjector() {
+		Struts2GuicePluginModule SGM =  new Struts2GuicePluginModule();//-----------------------1)
+		//JpaPersistModule Jpm =new JpaPersistModule("St2Gui3JpaPU" );
+		MyBatisModule mbm = new MyBatisModule() {
+			
+			@Override
+			protected void initialize() {
+				// TODO Auto-generated method stub
 
-            @Override
-            protected void initialize() {
                 install(JdbcHelper.Oracle_Thin);
 
                 bindDataSourceProviderType(PooledDataSourceProvider.class);
@@ -40,15 +46,28 @@ public class AppInjector {
                 //binds
                 Names.bindProperties(binder(), createTestProperties());
                 bind(MUserService.class).to(MUserImpl.class);
-                bind(MEmployeeService.class).to(MEmployeeImpl.class);
-            	}
+                bind(MEmployeeService.class).to(MEmployeeImpl.class);        	
+			}
+		};
+		ServletModule SM =     new ServletModuleImpl(); 
+		return Guice.createInjector (SGM,mbm,SM);   
+	}
 
-        	}
-		);
-		
-		inj = injector;
-		
-		return injector;
+	private class ServletModuleImpl extends ServletModule
+
+	 {
+		@Override
+		protected void configureServlets() {
+
+			//filter("/*").through(PersistFilter.class); 
+			// Struts 2 setup
+			bind(StrutsPrepareAndExecuteFilter.class).in(Singleton.class); //-----2)
+			filter("/*").through(StrutsPrepareAndExecuteFilter.class); //-------2)
+
+			//bind(BookDAO.class).to (BookDAOImpl.class);
+
+	        }
+
 	}
 	
 	protected static Properties createTestProperties() {

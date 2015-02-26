@@ -7,6 +7,7 @@ import models.MEmployee;
 import tests.MyBatisSqlSessionFactory;
 
 import com.google.inject.Guice;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -14,11 +15,14 @@ public class CreateEmployee extends ActionSupport{
 
 	//Injector injector = Guice.createInjector(new MyBatisSampleModule());
 	
-	Injector injector = AppInjector.getInjector();
+	//Injector injector = AppInjector.getInjector();
 	
 	MEmployee employee;
 	
-	MEmployeeService emp = injector.getInstance(MEmployeeService.class);
+	//MEmployeeService emp = AppInjector.inj.getInstance(MEmployeeService.class);
+	
+	@Inject
+	private MEmployeeService emp;
 	
 	public String createNewEmployee(){
 		Integer emp_ID = employee.getEmployee_ID();

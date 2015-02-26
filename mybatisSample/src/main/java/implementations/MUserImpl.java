@@ -10,12 +10,13 @@ import models.MUser;
 
 public class MUserImpl implements MUserService{
 
+	@Inject
 	MUserMapper userMapper;
 	
-	@Inject
+	/*@Inject
 	MUserImpl(MUserMapper userMapper){
 		this.userMapper = userMapper;
-	}
+	}*/
 	
 	@Override
 	public List<MUser> getAllUsers() {
