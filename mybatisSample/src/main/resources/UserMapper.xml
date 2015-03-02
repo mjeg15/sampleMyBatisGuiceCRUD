@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
   'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 
-<mapper namespace='tests.MUserMapper'>
+<mapper namespace='mappers.MUserMapper'>
 
-  <select id='getUserById' parameterType='int' resultType='tests.MUser'>
+  <select id='getUserById' parameterType='int' resultType='models.MUser'>
      SELECT 
       S_User_ID as S_User_ID, 
       Username as Username,

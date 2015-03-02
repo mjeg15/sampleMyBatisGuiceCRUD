@@ -26,17 +26,17 @@ public class MUserImpl implements MUserService{
 
 	@Override
 	public List<String> getAllUserNames() {
-		return userMapper.selectAllUsernames();
+		return userMapper.getAllUsernames();
 	}
 
 	@Override
 	public List<String> getAllPasswords() {
-		return userMapper.selectAllPasswords();
+		return userMapper.getAllPasswords();
 	}
 	
 	@Override
 	public List<String> getAllRoles(){
-		return userMapper.selectAllRoles();
+		return userMapper.getAllRoles();
 	}
 
 }

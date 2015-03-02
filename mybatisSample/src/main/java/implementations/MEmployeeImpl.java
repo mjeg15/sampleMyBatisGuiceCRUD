@@ -25,32 +25,32 @@ public class MEmployeeImpl implements MEmployeeService{
 
 	@Override
 	public List<MEmployee> getAllActiveEmployee() {
-		return employeeMapper.getAllActiveEmployees();
+		return employeeMapper.getAllActiveEmployee();
 	}
 
 	@Override
 	public void updateEmployee(MEmployee employee) {
-		employeeMapper.UpdateEmployee(employee);
+		employeeMapper.updateEmployee(employee);
 	}
 
 	@Override
 	public void insertEmployee(MEmployee employee) {
-		employeeMapper.InsertEmployee(employee);
+		employeeMapper.insertEmployee(employee);
 	}
 
 	@Override
 	public Integer getLatestID() {
-		return employeeMapper.selectLatestID();
+		return employeeMapper.getLatestID();
 	}
 
 	@Override
 	public void disableEmployee(Integer Employee_ID) {
-		employeeMapper.DisableEmployee(Employee_ID);
+		employeeMapper.disableEmployee(Employee_ID);
 	}
 
 	@Override
 	public List<MEmployee> getAllEmployee() {
-		return employeeMapper.getAllEmployees();
+		return employeeMapper.getAllEmployee();
 	}
 
 	

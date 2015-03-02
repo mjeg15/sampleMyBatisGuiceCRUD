@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
   'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 
-<mapper namespace='tests.MEmployeeMapper'>
+<mapper namespace='mappers.MEmployeeMapper'>
 
-  <select id='getUserById' parameterType='int' resultType='tests.MEmployee'>
+  <select id='getUserById' parameterType='int' resultType='models.MEmployee'>
      SELECT 
       Employee_ID as Employee_ID, 
       Name as Name,

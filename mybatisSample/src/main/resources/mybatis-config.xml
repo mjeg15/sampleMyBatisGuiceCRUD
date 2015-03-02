@@ -5,8 +5,8 @@
 <configuration>
  <properties resource='jdbc.properties'/>
  <typeAliases>
-  <typeAlias type='tests.MUser' alias='MUser'></typeAlias>
-  <typeAlias type='tests.MEmployee' alias='MEmployee'></typeAlias>
+  <typeAlias type='models.MUser' alias='MUser'></typeAlias>
+  <typeAlias type='models.MEmployee' alias='MEmployee'></typeAlias>
  </typeAliases>
  <environments default='development'>
   <environment id='development'>

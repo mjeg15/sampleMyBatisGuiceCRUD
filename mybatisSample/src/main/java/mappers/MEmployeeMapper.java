@@ -44,21 +44,21 @@ public interface MEmployeeMapper {
 	public MEmployee getUserById(Integer Employee_ID);
 	
 	@Select(SQL_SELECT_ALL_ACTIVE_EMPLOYEE)
-	public List<MEmployee> getAllActiveEmployees();
+	public List<MEmployee> getAllActiveEmployee();
 	
 	@Select(SQL_SELECT_ALL_EMPLOYEE)
-	public List<MEmployee> getAllEmployees();
+	public List<MEmployee> getAllEmployee();
 	
 	@Update(SQL_DEACTIVATE_EMPLOYEE)
-	public void DisableEmployee(Integer Employee_ID);
+	public void disableEmployee(Integer Employee_ID);
 	
 	@Update(SQL_UPDATE)
-	public void UpdateEmployee(MEmployee employee);
+	public void updateEmployee(MEmployee employee);
 	
 	@Insert(SQL_INSERT)
-	public void InsertEmployee(MEmployee employee);
+	public void insertEmployee(MEmployee employee);
 	
 	@Select(SQL_GET_LATEST_ID)
-	public Integer selectLatestID();
+	public Integer getLatestID();
 
 }

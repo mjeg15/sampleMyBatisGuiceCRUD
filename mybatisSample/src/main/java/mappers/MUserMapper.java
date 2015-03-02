@@ -11,15 +11,15 @@ public interface MUserMapper {
 	public MUser getUserById(Integer S_User_ID);
 	
 	@Select("SELECT * FROM S_Users")
-	List<MUser> selectAllUsers();
+	List<MUser> getAllUsers();
 	
 	@Select("SELECT Username FROM S_USER ORDER BY S_User_ID")
-	List<String> selectAllUsernames();
+	List<String> getAllUsernames();
 	
 	@Select("SELECT Password FROM S_USER ORDER BY S_User_ID")
-	List<String> selectAllPasswords();
+	List<String> getAllPasswords();
 	
 	@Select("SELECT Role FROM S_USER ORDER BY S_User_ID")
-	List<String> selectAllRoles();
+	List<String> getAllRoles();
 	
 }
