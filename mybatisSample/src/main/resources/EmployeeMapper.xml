@@ -25,16 +25,20 @@
     <result property='IsActive' column='IsActive'/>
    </resultMap>
 
-  <select id='getAllEmployees' resultMap='Employee'>
+  <select id='getAllEmployee' resultMap='Employee'>
+   SELECT * FROM Employee 
+  </select>
+  
+  <select id='getAllActiveEmployee' resultMap='Employee'>
    SELECT * FROM Employee WHERE IsActive='Y'
   </select>
 
-  <insert id='InsertEmployee' parameterType='MEmployee'>
+  <insert id='insertEmployee' parameterType='MEmployee'>
   INSERT INTO Employee(Employee_ID, Name, Email, Phone, Job_Title, IsActive)
   VALUES (#{Employee_ID}, #{Name}, #{Email}, #{Phone}, #{Job_Title}, #{IsActive})
   </insert>
   
-  <update id='UpdateEmployee' parameterType='MEmployee'>
+  <update id='updateEmployee' parameterType='MEmployee'>
   UPDATE Employee
   SET
   	Name = #{Name},
@@ -45,7 +49,7 @@
   	Employee_ID = #{Employee_ID}
   </update>
   
-  <update id='DisableEmployee' parameterType='MEmployee'>
+  <update id='disableEmployee' parameterType='MEmployee'>
   UPDATE Employee
   SET
   	IsActive='N'

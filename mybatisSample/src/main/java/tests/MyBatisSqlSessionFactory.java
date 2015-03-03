@@ -68,7 +68,7 @@ public class MyBatisSqlSessionFactory
 
 	            @Override
 	            protected void initialize() {
-	                setEnvironmentId("test");
+	                setEnvironmentId("development");
 	                setClassPathResource("mybatis-config.xml");
 	            }
 

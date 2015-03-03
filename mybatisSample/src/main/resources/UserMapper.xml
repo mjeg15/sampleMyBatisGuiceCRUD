@@ -28,6 +28,8 @@
   <select id='getAllUsernames' resultType='String'>SELECT Username FROM S_USER ORDER BY S_User_ID</select>	
   
   <select id='getAllPasswords' resultType='String'>SELECT Password FROM S_USER ORDER BY S_User_ID</select>	
+  
+  <select id='getAllRoles' resultType='String'>SELECT Role FROM S_USER ORDER BY S_User_ID</select>
 
   <insert id='insertUser' parameterType='MUser' useGeneratedKeys='true' keyProperty='userId'>
    INSERT INTO USER(S_User_ID, Username, Password, Role)

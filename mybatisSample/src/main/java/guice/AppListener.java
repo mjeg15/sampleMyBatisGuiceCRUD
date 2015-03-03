@@ -12,6 +12,7 @@ import mappers.MUserService;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
 import org.mybatis.guice.MyBatisModule;
+import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.builtin.PooledDataSourceProvider;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 
@@ -29,7 +30,7 @@ public class AppListener extends GuiceServletContextListener{
 	public Injector getInjector() {
 		Struts2GuicePluginModule SGM =  new Struts2GuicePluginModule();//-----------------------1)
 		//JpaPersistModule Jpm =new JpaPersistModule("St2Gui3JpaPU" );
-		MyBatisModule mbm = new MyBatisModule() {
+		/*MyBatisModule mbm = new MyBatisModule() {
 			
 			@Override
 			protected void initialize() {
@@ -48,9 +49,49 @@ public class AppListener extends GuiceServletContextListener{
                 bind(MUserService.class).to(MUserImpl.class);
                 bind(MEmployeeService.class).to(MEmployeeImpl.class);        	
 			}
+		};*/
+		
+		
+		XMLMyBatisModule xmlmbm = new XMLMyBatisModule() {
+			
+			@Override
+			protected void initialize() {
+				 setClassPathResource("mybatis-config.xml");
+			}
 		};
-		ServletModule SM =     new ServletModuleImpl(); 
-		return Guice.createInjector (SGM,mbm,SM);   
+		
+		ServletModule SM = new ServletModuleImpl(){
+			
+			@Override
+			protected void configureServlets() {
+			      bind(StrutsPrepareAndExecuteFilter.class).in(
+			        Singleton.class);
+			      filter("/*").through(
+			        StrutsPrepareAndExecuteFilter.class);
+			     }
+			    
+		}; 
+		
+		/*Injector injector = Guice.createInjector(
+			    new Struts2GuicePluginModule(), new ServletModule() {
+
+			     @Override
+			     protected void configureServlets() {
+			      bind(StrutsPrepareAndExecuteFilter.class).in(
+			        Singleton.class);
+			      filter("/*").through(
+			        StrutsPrepareAndExecuteFilter.class);
+			     }
+			    }, new XMLMyBatisModule() {
+
+			     @Override
+			     protected void initialize() {
+			      setEnvironmentId("development");
+			      setClassPathResource("mybatis-config.xml");
+			     }
+			   });*/
+		
+		return Guice.createInjector (SGM,xmlmbm,SM);   
 	}
 
 	private class ServletModuleImpl extends ServletModule

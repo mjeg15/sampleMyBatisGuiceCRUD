@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import mappers.MUserMapper;
 import mappers.MUserService;
 import models.MEmployee;
 import models.MUser;
@@ -27,12 +28,11 @@ public class LoginAuthAction extends ActionSupport implements SessionAware{
 	private Injector injector = AppInjector.getInjector();
 
 	@Inject
-	MUserService usermap;
+	MUserMapper usermap;
 		
-	public String authenticate() {
+	public String execute() {
 		
-		if (/*this.username.equals("admin")
-				&& this.password.equals("admin")*/userAccountCheck()) {
+		if (userAccountCheck()) {
 			sessionMap.put("username", username);
 			sessionMap.put("role", role);
 			return "success";
@@ -46,12 +46,7 @@ public class LoginAuthAction extends ActionSupport implements SessionAware{
 	
 	public String logout(){
 		
-		if(sessionMap.containsKey("username")){
-			sessionMap.remove("username");
-		}
-		if(sessionMap.containsKey("role")){
-			sessionMap.remove("role");
-		}
+		sessionMap.clear();
 		
 		return SUCCESS;
 	}
@@ -62,7 +57,7 @@ public class LoginAuthAction extends ActionSupport implements SessionAware{
 	 */
 	private boolean userAccountCheck(){
 
-		List<String> userNames = usermap.getAllUserNames();
+		List<String> userNames = usermap.getAllUsernames();
 		List<String> passwords = usermap.getAllPasswords();
 		List<String> roles = usermap.getAllRoles();
 		

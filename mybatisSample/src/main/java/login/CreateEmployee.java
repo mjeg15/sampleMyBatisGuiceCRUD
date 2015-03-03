@@ -22,7 +22,7 @@ public class CreateEmployee extends ActionSupport{
 	//MEmployeeService emp = AppInjector.inj.getInstance(MEmployeeService.class);
 	
 	@Inject
-	private MEmployeeService emp;
+	private MEmployeeMapper emp;
 	
 	public String createNewEmployee(){
 		Integer emp_ID = employee.getEmployee_ID();
@@ -40,7 +40,7 @@ public class CreateEmployee extends ActionSupport{
 	}
 	
 	public String goToUpdateEmployee(){
-		employee = emp.getUserByID(employee.getEmployee_ID());
+		employee = emp.getUserById(employee.getEmployee_ID());
 		
 		return SUCCESS;
 	}

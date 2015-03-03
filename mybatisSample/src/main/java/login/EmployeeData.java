@@ -5,9 +5,11 @@ import guice.AppInjector;
 import java.util.List;
 import java.util.Map;
 
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.opensymphony.xwork2.ActionSupport;
 
+import mappers.MEmployeeMapper;
 import mappers.MEmployeeService;
 import models.MEmployee;
 
@@ -15,13 +17,16 @@ public class EmployeeData extends ActionSupport{
 	
 	public List<MEmployee> employees;
 
-	private Injector injector = AppInjector.inj/*AppInjector.getInjector()*/;
+	//private Injector injector = AppInjector.inj/*AppInjector.getInjector()*/;
 	
 	private Map<String, Object> sessionMap = LoginAuthAction.getSession();
 	
+	@Inject
+	MEmployeeMapper employeeService;
+	
 	public String testing(){
 		
-		MEmployeeService employeeService = injector.getInstance(MEmployeeService.class);
+		//MEmployeeService employeeService = injector.getInstance(MEmployeeService.class);
 				
 		if(!sessionMap.get("role").equals("ADMIN"))
 			employees = employeeService.getAllActiveEmployee();

@@ -40,25 +40,25 @@ public interface MEmployeeMapper {
 	
 	public static final String SQL_GET_LATEST_ID = "SELECT MAX(Employee_ID) FROM Employee";
 	
-	@Select(SQL_SELECT_EMPLOYEE_WITH_ID)
+	//@Select(SQL_SELECT_EMPLOYEE_WITH_ID)
 	public MEmployee getUserById(Integer Employee_ID);
 	
-	@Select(SQL_SELECT_ALL_ACTIVE_EMPLOYEE)
+	//@Select(SQL_SELECT_ALL_ACTIVE_EMPLOYEE)
 	public List<MEmployee> getAllActiveEmployee();
 	
-	@Select(SQL_SELECT_ALL_EMPLOYEE)
+	//@Select(SQL_SELECT_ALL_EMPLOYEE)
 	public List<MEmployee> getAllEmployee();
 	
-	@Update(SQL_DEACTIVATE_EMPLOYEE)
+	//@Update(SQL_DEACTIVATE_EMPLOYEE)
 	public void disableEmployee(Integer Employee_ID);
 	
-	@Update(SQL_UPDATE)
+	//@Update(SQL_UPDATE)
 	public void updateEmployee(MEmployee employee);
 	
-	@Insert(SQL_INSERT)
+	//@Insert(SQL_INSERT)
 	public void insertEmployee(MEmployee employee);
 	
-	@Select(SQL_GET_LATEST_ID)
+	//@Select(SQL_GET_LATEST_ID)
 	public Integer getLatestID();
 
 }
