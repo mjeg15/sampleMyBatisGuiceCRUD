@@ -13,14 +13,30 @@
  
 	<package name="default" extends="struts-default" namespace="/">
 	    
+	    <interceptors>
+                <interceptor class="login.LoginInterceptor" name="loginInterceptor">
+                </interceptor>
+                <interceptor-stack name="loginStack">
+                        <interceptor-ref name="loginInterceptor" />
+                        <interceptor-ref name="defaultStack" />
+                </interceptor-stack>
+        </interceptors>
+	    
+	    <action name="home" method="login" 
+			class="login.LoginAuthAction">
+            <interceptor-ref name="loginStack" />
+			<result name="login" type = "redirect">/pages/login.jsp</result> 
+			<result name="success" type="redirect">employeeList</result> 
+		</action>
+	    
  		<action name="employeeList" method="testing" 
 			class="login.EmployeeData">
-			<result name="success">employeeList.jsp</result> 
+			<result name="success">/pages/employeeList.jsp</result> 
 		</action>
  
 		<action name="login"
 			class="login.LoginAuthAction">
-				<result name="success" type="redirect">/pages/employeeList.action</result>
+				<result name="success" type="redirect">employeeList</result>
 				<result name="error">/pages/login.jsp</result>
 		</action>
 		
@@ -36,7 +52,7 @@
 		
 		<action name="createEmployee" method="createNewEmployee"
 			class="login.CreateEmployee">
-			<result name="success" type = "redirect">/pages/employeeList.action</result>
+			<result name="success" type = "redirect">employeeList</result>
 		</action>
 		
 		<action name="goToUpdateEmployee" method="goToUpdateEmployee"
@@ -46,12 +62,12 @@
 		
 		<action name="updateEmployee" method="updateEmployee"
 			class="login.CreateEmployee">
-			<result name="success" type = "redirect">/pages/employeeList.action</result>
+			<result name="success" type = "redirect">employeeList</result>
 		</action>
 		
 		<action name="disableEmployee" method="disableEmployee"
 			class="login.CreateEmployee">
-			<result name="success" type = "redirect">/pages/employeeList.action</result>
+			<result name="success" type = "redirect">employeeList</result>
 		</action>
 		
 	</package>

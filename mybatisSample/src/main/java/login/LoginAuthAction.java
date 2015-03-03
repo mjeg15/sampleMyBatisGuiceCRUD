@@ -51,6 +51,10 @@ public class LoginAuthAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
+	public String login(){
+		return SUCCESS;
+	}
+	
 	/**
 	 * Account validation code
 	 * @return
